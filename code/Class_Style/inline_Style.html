@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    .active{
+        margin-top: 30px;
+        width: 200px;
+        height: 200px;
+        background-color: skyblue;
+    }
+    .red-bg{
+        margin-top: 30px;
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
+    .abc{
+        margin-top: 30px;
+        width: 200px;
+        height: 200px;
+        background-color: green;
+    }
+</style>
+<body>
+    <div id="app">
+        <div style="width: 100px; height: 100px; background: skyblue;"></div>
+
+        <!-- 内联样式 -->
+        <div style="width: 100px; height: 100px; background: skyblue;" 
+        :style="{ border:'10px solid red' }"></div>
+
+        <!-- 变量拼接 -->
+        <div style="width: 100px; height: 100px; background: skyblue;" 
+        :style="{ border: borderWidth + 'px solid red' }"></div>
+
+        <div style="width: 100px; height: 100px; background: skyblue;" 
+        :style="{ border: borderWidth + 'px solid red', margin: paddingWidth+'px'}"></div>
+
+        <!-- CSS 内联样式放置对象 -->
+        <div :style="styleObj"></div>
+
+        <!-- CSS 数组方式拼接 -->
+        <div :style="styleArr"></div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                borderWidth:50,
+                paddingWidth:20,
+                styleObj:{
+                    width:"200px",
+                    height:"300px",
+                    padding:"50px",
+                    //backgroundColor:skyblue,
+                    'background-color':'skyblue'
+                },
+                styleArr:[
+                    {
+                        width:"200px",
+                        height:"300px",
+                        padding:"50px",
+                        //backgroundColor:skyblue,
+                        'background-color':'skyblue'
+                    },
+                    {
+                        border:"30px solid yellow"
+                    }
+                ]
+            },
+
+        })
+    </script>
+</body>
+</html>

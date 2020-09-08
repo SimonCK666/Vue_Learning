@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <div id="app">
+        <h3>Stars' List</h3>
+        <ul>
+            <li v-for="item in stars">
+                {{item}}
+            </li>
+        </ul>
+
+        <hr>
+
+        <h3>Students' List</h3>
+        <ul>
+            <li v-for="item in students">
+                <h4>Name: {{item.studentName}}</h4>
+                <p>Age: {{item.age}}</p>
+                <p>School: {{item.school}}</p>
+            </li>
+        </ul>
+        
+        <hr>
+
+        <h3>Students' List (with key)</h3>     <!--带索引值 -->
+        <ul>
+            <li v-for="item,key in students">
+                <h4>Key: {{key}} --- Name: {{item.studentName}}</h4>
+                <p>Age: {{item.age}}</p>
+                <p>School: {{item.school}}</p>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h3>Loop Objects</h3>   <!-- 循环一个对象中的item -->
+        <ul>
+            <li v-for="item,key in students[0]">
+                key: {{key}} --- value: {{item}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                stars:['Kitty','Simon','John','Jim'],
+                students:[
+                    {
+                        studentName:"Simon",
+                        age:18,
+                        school:"Harward"
+                    },
+                    {
+                        studentName:"Jim",
+                        age:16,
+                        school:"NYU"
+                    },
+                    {
+                        studentName:"Kitty",
+                        age:17,
+                        school:"MIT"
+                    },
+                    {
+                        studentName:"John",
+                        age:15,
+                        school:"UCLA"
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

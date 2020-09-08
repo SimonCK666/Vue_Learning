@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <!-- VIEW -->
+    <div id="app">
+        <h1>User Name: {{username}}</h1>
+        <!-- Condition -->
+        <h3 v-if="isVip">Type: VIP</h3>
+        <!-- tips: v-if & v-else中间不能有任何其他内容 -->
+        <!-- <div>中间内容</div> -->
+        <h3 v-else>Type: Normal</h3>
+
+        <hr>
+
+        <h1>User Time Permission</h1>
+
+        <h3 v-if="age>18">Permission: 24H</h3>
+        <h3 v-else-if="age>14">Permission: 8H</h3>
+        <h3 v-else>Permission: 4H</h3>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                username:"Simon",
+                isVip:true,
+                age:24
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <!-- VIEW -->
+    <div id="app">
+
+        <h3 v-show="tab==1">Home</h3>
+        <h3 v-show="tab==2">News</h3>
+        <h3 v-show="tab==3">Personal Page</h3>
+
+        <button @click="tabChange" data-id="1">Home</button>
+        <button @click="tabChange" data-id="2">News</button>
+        <button @click="tabChange" data-id="3">Personal</button>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                tab:1
+            },
+            methods:{
+                tabChange:function(e){
+                    console.log(e)
+                    let tabid = e.target.dataset.id
+                    console.log(this)
+                    console.log(app)
+                    //app.tab = tabid
+                    this.tab = tabid  // equal to above app.tab = tabid
+                }
+            }
+        })
+    </script>
+</body>
+</html>

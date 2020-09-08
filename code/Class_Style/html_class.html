@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    .active{
+        margin-top: 30px;
+        width: 200px;
+        height: 200px;
+        background-color: skyblue;
+    }
+    .red-bg{
+        margin-top: 30px;
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
+    .abc{
+        margin-top: 30px;
+        width: 200px;
+        height: 200px;
+        background-color: green;
+    }
+</style>
+<body>
+    <div id="app">
+        <!-- 原始 -->
+        <!-- <div class="page"></div> -->
+
+        <!-- 绑定属性 -->
+        <!-- 通过对象的方式决定是否存在某个类 -->
+        <h1>通过对象的方式决定是否存在某个类</h1>
+        <div :class="{active:isTrue}"></div>
+        <div class="page" :class="{active:isTrue}"></div>
+
+        <!-- 直接放置对象 -->
+        <h1>直接放置对象</h1>
+        <div class="page" :class="styleObj"></div>
+
+        <!-- 放置数组 -->
+        <h1>放置数组</h1>
+        <div class="page" :class="styleArr"></div>
+
+        <!-- 放置字符串 -->
+        <h1>放置字符串</h1>
+        <div class="page" :class="styleStr"></div>
+
+        <!-- 混合使用 -->
+        <h1>混合使用</h1>
+        <div class="page" :class="styleArrObj"></div>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                isTrue:true,
+                styleObj:{active:true},
+                // 可直接用数组的方式进行添加和删除
+                styleArr:['col-xs-12','red-bg'],
+                styleStr:"abc cba qwer",
+                styleArrObj:['abc', {active:true}]
+            },
+
+        })
+    </script>
+</body>
+</html>

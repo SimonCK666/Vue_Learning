@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <div id="app">
+        <h1>点击次数： {{count}}</h1>
+        <!-- 可以使用表达式完成事件处理 -->
+        <button @click="count += 1">Click</button>
+
+        <!-- 获取事件对象 -->
+        <button @click="clickEvent">Click 2</button>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                count: 0
+            },
+            methods: {
+                clickEvent: function(event) {
+                    console.log(this)
+                    console.log(event)
+                    this.count++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

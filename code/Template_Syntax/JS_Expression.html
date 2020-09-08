@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <!-- 模板语言的表达式应用 -->
+        <h3>
+            {{firstname+lastname}}
+        </h3>
+        <!-- 三元运算符 -->
+        <h3>
+            {{isVip?"Welcome back!":"Please recharge!"}}
+        </h3>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                msg:"Hello Vue!",
+                firstname:"Simon",
+                lastname:"Yang",
+                isVip:true,
+            }
+        })
+    </script>
+</body>
+</html>

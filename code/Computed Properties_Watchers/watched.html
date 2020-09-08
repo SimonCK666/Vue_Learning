@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <div id="app">
+        {{msg}}
+        <ul>
+            <li v-for="item in arr">
+                {{ item }}
+            </li>
+        </ul>
+    </div>
+    
+
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                msg:"hello Vue",
+                arr:['Red','Yellow','Black']
+            },
+            watch:{
+                msg:function(val){
+                    console.log("监听事件-----msg")
+                    console.log(val)
+                },
+                arr:function(val){
+                    console.log("监听事件-----arr")
+                    console.log(val)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

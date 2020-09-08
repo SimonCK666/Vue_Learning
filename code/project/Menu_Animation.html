@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .page {
+        width: 100vw;
+        height: 100vh;
+        background-color: darkgray;
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+    .rMenu {
+        width: 50vw;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        transform: translateX(50vw);
+        background-color: skyblue;
+    }
+    .slideRight-enter-active, .slideRight-leave-active {
+        transition: all 3s;
+    }
+    .slideRight-enter, .slideRight-leave-to {
+        transform: translateX(100vw);
+        
+    }
+</style>
+<body>
+    <div id="app">
+        <div class="page">
+            Mean Page
+            <button @click="toggleMenu">Switch Right Bar</button>
+        </div>
+        <transition name="slideRight">
+            <div class="rMenu" v-if="isShow">
+                Right Side Bar
+            </div>
+        </transition>
+        
+    </div>
+
+    <script>
+        let app = new Vue({
+            el:"#app",
+            data:{
+                isShow: false
+            },
+            methods: {
+                toggleMenu: function() {
+                    this.isShow = !this.isShow;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

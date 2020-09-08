@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #pane{
+        width: 200px;
+        height: 200px;
+        background-color: skyblue;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <div id="app">
+        <!-- 一般情况 -->
+        <h1>{{firstname+lastname}}</h1>
+        <!-- 计算属性 -->
+        <h1>{{fullname}}</h1>
+        
+        <!-- 逆序显示一个单词 -->
+        <h1>{{ word.split("").reverse().join("") }}</h1>
+        <!-- 计算属性 -->
+        <h1>{{reverseWord}}</h1>
+
+        <!-- 循环偶数的年龄 -->
+        <ul>
+            <li v-for="item,index in oddStudents">
+                <h3>{{item.studentName}}</h3>
+                <h4>{{item.age}} --- {{item.school}}</h4>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        
+let app = new Vue({
+    el:"#app",
+    data:{
+        firstname:"Simon",
+        lastname:"Yang",
+        word:"music",
+        students:[
+            {
+                studentName:"Simon",
+                age:18,
+                school:"Harward"
+            },
+            {
+                studentName:"Jim",
+                age:17,
+                school:"NYU"
+            },
+            {
+                studentName:"Kitty",
+                age:16,
+                school:"MIT"
+            },
+            {
+                studentName:"John",
+                age:15,
+                school:"UCLA"
+            }
+        ],
+    },
+    computed:{
+        fullname:function() {
+            console.log(this);
+            // 会将计算结果进行缓存，只要 this.firstname & this.lastname 内容不改变，就不会重新计算
+            return this.firstname+this.lastname;
+        },
+        reverseWord:{
+            get:function() {
+                return this.word.split("").reverse().join("");
+            },
+            set:function(value) {
+                console.log(value)
+                this.word = value.split("").reverse().join("");
+            }
+        },
+        oddStudents:function() {
+            let results = this.students.filter((item, i)=>{
+                return item.age % 2 == 0;
+            });
+            return results;
+        }
+    }
+})
+    </script>
+</body>
+</html>

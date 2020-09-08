@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <!-- 只插入一次,不再修改 -->
+        <h1 v-once>{{msg}}</h1>   <!--如果之后更改 msg 的值，这里的输出不会改变-->
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                msg:"Hello Vue!"
+            }
+        })
+    </script>
+</body>
+</html>

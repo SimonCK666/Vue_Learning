@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <div id="app">
+        <ul>
+            <!-- 从父组件传值到子组件 -->
+            <!-- 静态属性 -->
+            <school school-name="清华北大"></school>
+            <!-- 动态属性 -->
+            <school :school-name="'上海浙大'"></school>
+        </ul>
+    </div>
+
+    <script>
+        // 产品组件
+        Vue.component("school", {
+            props: ['schoolName'],
+            template: `<li>
+                            <h3>Name {{schoolName}}</h3>
+                        </li>`
+            
+        })
+
+        // 根组件
+        let app = new Vue({
+            el: "#app",
+            data: {
+                schoolList: ['sxt', 'czbk', 'xmg']
+            }
+        })
+    </script>
+</body>
+</html>

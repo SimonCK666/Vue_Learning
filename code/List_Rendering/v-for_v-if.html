@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <div id="app">
+        <!-- 将偶数年龄的学生渲染出来 -->
+        <h3>Conditional & Loop Rendering</h3>
+        <h4>[Render out the students of even age]</h4>
+        <ol>
+            <!-- 判断偶数年龄 -->
+            <!-- 先循环再判断 -->
+            <li v-for="item,index in students" v-if="item.age % 2 == 0" :key="index">
+                <h5>index: {{index}} --- value: {{item.studentName}}</h5>
+                <p>Age: {{item.age}}</p>
+                <p>School: {{item.school}}</p>
+            </li>
+        </ol>
+
+        
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                students:[
+                    {
+                        studentName:"Simon",
+                        age:18,
+                        school:"Harward"
+                    },
+                    {
+                        studentName:"Jim",
+                        age:17,
+                        school:"NYU"
+                    },
+                    {
+                        studentName:"Kitty",
+                        age:16,
+                        school:"MIT"
+                    },
+                    {
+                        studentName:"John",
+                        age:15,
+                        school:"UCLA"
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

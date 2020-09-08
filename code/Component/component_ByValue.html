@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <div id="app">
+        <ul>
+            <!-- <li>
+                <h3>Name {{title}}</h3>
+                <h4>Price {{price}}</h4>
+                <h5>Brief {{brief}}</h5>
+            </li> -->
+            <!-- 从父组件传值到子组件 -->
+            <product-com v-for="item, index in proList" :product="item"></product-com>
+        </ul>
+    </div>
+
+    <script>
+        // 产品组件
+        Vue.component("product-com", {
+            props: ['product'],
+            template: `<li>
+                            <h3>Name {{product.title}}</h3>
+                            <h4>Price {{product.price}}</h4>
+                            <h5>Brief {{product.brief}}</h5>
+                        </li>`,
+            
+        })
+
+        // 根组件
+        let app = new Vue({
+            el: "#app",
+            data: {
+                proList: [
+                    {
+                        title: "Pro1",
+                        price: "10",
+                        brief: "Describe 1"
+                    },
+                    {
+                        title: "Pro2",
+                        price: "20",
+                        brief: "Describe 2"
+                    },
+                    {
+                        title: "Pro3",
+                        price: "30",
+                        brief: "Describe 3"
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
