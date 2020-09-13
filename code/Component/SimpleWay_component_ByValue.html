@@ -14,15 +14,19 @@
             <school school-name="清华北大"></school>
             <!-- 动态属性 -->
             <school :school-name="'上海浙大'"></school>
+            <!-- 动态属性传递父组件的数据 -->
+            <school :school-name="schoolList[0]"></school>
+            <!-- 循环传值组件 -->
+            <school v-for="item, index in schoolList" :index="index" :school-name="item" :key="index"></school>
         </ul>
     </div>
 
     <script>
         // 产品组件
         Vue.component("school", {
-            props: ['schoolName'],
+            props: ['schoolName', 'index'],
             template: `<li>
-                            <h3>Name {{schoolName}}</h3>
+                            <h3>{{index}} Name {{schoolName}}</h3>
                         </li>`
             
         })
